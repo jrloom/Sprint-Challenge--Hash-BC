@@ -13,6 +13,21 @@ def get_indices_of_item_weights(weights, length, limit):
     YOUR CODE HERE
     """
 
+    # ? fill table
+    for i in range(len(weights)):
+        hash_table_insert(ht, weights[i], i)
+
+    # ? find low values
+    for low in range(len(weights)):
+        # ? higher value == weight limit - lower value
+        high = hash_table_retrieve(ht, (limit - weights[low]))
+        # ? check if high is None (None > int == error)
+        if high:
+            if high > low:
+                # ? yes...these are indices, not the values of the indices...
+                print(high, low)
+                return [high, low]
+
     return None
 
 
