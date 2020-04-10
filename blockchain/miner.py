@@ -28,6 +28,7 @@ def proof_of_work(last_proof):
     #  TODO: Your code here
     previous_hash = hashlib.sha256(f'{last_proof}'.encode()).hexdigest()
 
+    # ? if guess is false, try again
     while not valid_proof(previous_hash, proof):
         proof += 1
 
@@ -45,8 +46,10 @@ def valid_proof(last_hash, proof):
     """
 
     # TODO: Your code here!
+    # ? guesses
     current_hash = hashlib.sha256(f'{proof}'.encode()).hexdigest()
 
+    # ? returns true or false
     return last_hash[-6:] == current_hash[:6]
 
 
